@@ -1,0 +1,18 @@
+.actions:empty {
+  display: none;
+}
+
+.actions-default {
+  display: none;
+}
+
+.actions:empty + .actions-default {
+  display: block;
+}
+
+.header{
+    /* display: inline-flex; */
+    padding: 20px;
+
+    /* flex-direction: row; */
+}

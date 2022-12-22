@@ -1,0 +1,80 @@
+<div class="ui cards">
+  <div class="card">
+    <div class="content">
+      <div class="header">{{ user.firstName + " " }}{{ user.lastName }}</div>
+    </div>
+    <div class="extra content">
+      <button
+        (click)="showViewModal = true"
+        class="ui right floated pink basic button"
+      >
+        View Details
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-modal (dismiss)="showViewModal = false" *ngIf="showViewModal">
+  <div modalTitle>
+    <h3>Details of User: {{ user.firstName + " " + user.lastName }}</h3>
+  </div>
+  <div class="body">
+    <p>
+      First Name:<b> {{ user.firstName }}</b>
+    </p>
+    <p>
+      Last Name:<b> {{ user.lastName }}</b>
+    </p>
+    <p>
+      ID Number:<b> {{ user.id }}</b>
+    </p>
+  </div>
+  <div class="buttons">
+    <button
+      (click)="showViewModal = false; showEditModal = true"
+      class="ui right floated pink button"
+    >
+      Edit
+    </button>
+    <button
+      (click)="showViewModal = false"
+      class="ui right floated pink basic button"
+    >
+      Cancel
+    </button>
+  </div>
+</app-modal>
+
+<app-modal (dismiss)="showEditModal = false" *ngIf="showEditModal">
+  <div modalTitle>
+    <h3>Details of User: {{ user.firstName + " " + user.lastName }}</h3>
+  </div>
+  <form (ngSubmit)="onEdit()" class="ui form" [formGroup]="editUserForm">
+    <app-input
+      [control]="editUserForm.controls['firstName'] | formControl"
+      inputType="text"
+      label="First Name: "
+    ></app-input>
+    <app-input
+      [control]="editUserForm.controls['lastName'] | formControl"
+      inputType="text"
+      label="Last Name: "
+    ></app-input>
+    <div class="buttons">
+      <button
+        [disabled]="!editUserForm.valid"
+        (click)="onEdit(); showEditModal = false"
+        class="ui right floated pink button"
+      >
+        Save
+      </button>
+      <button
+        (click)="showEditModal = false"
+        class="ui right floated pink basic button"
+        [disabled]=""
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</app-modal>

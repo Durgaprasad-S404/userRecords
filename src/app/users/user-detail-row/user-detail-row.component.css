@@ -1,0 +1,16 @@
+.user-detail-row {
+  padding: 10px;
+}
+
+.user-detail-row.odd {
+  background-color: #f7f7fe;
+  padding: 10px;
+}
+
+.header {
+  align-items: center;
+}
+
+.buttons {
+  padding: 30px;
+}

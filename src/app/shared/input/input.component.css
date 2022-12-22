@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.inputblock {
+  display: inline-flex;
+  width: 50%;
+  white-space: nowrap;
+  align-items: center;
+}
+
+label {
+  flex: 25%;
+}
+
+.inputarea {
+  width: 100%;
+}
+
+p {
+  color: red;
+  flex: 25%;
+  font-size: 14px;
+}
