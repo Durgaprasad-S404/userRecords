@@ -1,10 +1,11 @@
 <div class="create-user">
   <button (click)="showModal = true" class="ui button pink">
-    Add users
+    <i class="add icon"></i>
+    Add Users
   </button>
 
   <app-modal (dismiss)="showModal = false" *ngIf="showModal">
-    <div modalTitle>Add new user details</div>
+    <div modalTitleP1><h3>Add New User Details</h3></div>
     <app-create-form
       (userCreate)="onSubmit($event)"
       (cancel)="onCancel()"

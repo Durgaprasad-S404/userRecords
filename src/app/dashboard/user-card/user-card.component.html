@@ -1,7 +1,7 @@
 <div class="ui cards">
   <div class="card">
     <div class="content">
-      <div class="header">'{{ user.firstName}} {{ user.lastName }}'</div>
+      <div class="header">'{{ user.firstName }} {{ user.lastName }}'</div>
     </div>
     <div class="extra content">
       <button
@@ -15,8 +15,11 @@
 </div>
 
 <app-modal (dismiss)="showViewModal = false" *ngIf="showViewModal">
-  <div modalTitle>
-    <h3>Details of User: {{ user.firstName + " " + user.lastName }}</h3>
+  <div modalTitleP1>
+    <p>Details of User: </p>
+  </div>
+  <div modalTitleP2>
+    <h3>{{ user.firstName + " " + user.lastName }}</h3>
   </div>
   <div class="body">
     <p>
@@ -46,8 +49,11 @@
 </app-modal>
 
 <app-modal (dismiss)="showEditModal = false" *ngIf="showEditModal">
-  <div modalTitle>
-    <h3>Details of User: {{ user.firstName + " " + user.lastName }}</h3>
+  <div modalTitleP1>
+    <p>Details of User: </p>
+  </div>
+  <div modalTitleP2>
+    <h3>{{ user.firstName + " " + user.lastName }}</h3>
   </div>
   <form (ngSubmit)="onEdit()" class="ui form" [formGroup]="editUserForm">
     <app-input

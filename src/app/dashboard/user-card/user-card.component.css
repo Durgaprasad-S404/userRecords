@@ -9,3 +9,7 @@
 .buttons{
     padding: 30px;
 }
+
+.ui.right.floated.pink.button:disabled {
+  background-color: grey;
+}

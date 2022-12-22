@@ -1,12 +1,11 @@
 <div class="field">
   <div class="inputblock">
     <label>{{ label }}</label>
-    <div class="inputarea">
+    <div class="inputarea" [ngClass]="showErrors()?'error':''">
       <input [formControl]="control" [type]="inputType" />
-
-      <div *ngIf="showErrors()" class="errormsg">
-        <p *ngIf="control.errors!['required']">This field is required</p>
-      </div>
     </div>
   </div>
+  <div *ngIf="showErrors()" class="errormsg">
+    <p *ngIf="control.errors!['required']">This field is required</p>
+  </div>  
 </div>
