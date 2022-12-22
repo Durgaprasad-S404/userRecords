@@ -1,18 +1,26 @@
 .user-detail-row {
   padding: 10px;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .user-detail-row.odd {
   background-color: #f7f7fe;
   padding: 10px;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .header {
   align-items: center;
-}
-
-.buttons {
-  padding: 30px;
 }
 
 .ui.right.floated.pink.button:disabled {

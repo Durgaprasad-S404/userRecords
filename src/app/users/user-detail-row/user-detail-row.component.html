@@ -1,14 +1,12 @@
 <div class="user-detail-row" [ngClass]="index % 2 === 0 ? 'even' : 'odd'">
-  <div>
-    <b>{{ index + ". " + user.firstName + " " + user.lastName }}</b>
-  </div>
-  <div>
+  <!-- <div> -->
+      <b class="textarea">{{ index + ". " + user.firstName + " " + user.lastName }}</b>
+  <!-- </div> -->
+  <div class="button">
     <button (click)="showViewModal = true" class="ui right floated button pink">
       View Details
     </button>
   </div>
-  <br />
-  <br />
 </div>
 
 <app-modal (dismiss)="showViewModal = false" *ngIf="showViewModal">
