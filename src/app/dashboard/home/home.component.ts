@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,16 +10,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   users: User[] = [];
-  usersSubscription: Subscription = new Subscription();
+  private destroy$ = new Subject();
 
   constructor(private userService: UserService) {}
   ngOnInit() {
-    this.usersSubscription = this.userService.usersObservable.subscribe(
-      (users) => (this.users = users)
-    );
+    this.userService.usersObservable
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((users) => (this.users = users));
   }
 
   ngOnDestroy() {
-    this.usersSubscription.unsubscribe();
+    this.destroy$.complete();
   }
 }

@@ -1,7 +1,7 @@
 <div class="user-detail-row" [ngClass]="index % 2 === 0 ? 'even' : 'odd'">
-  <!-- <div> -->
-      <b class="textarea">{{ index + ". " + user.firstName + " " + user.lastName }}</b>
-  <!-- </div> -->
+  <b class="textarea">{{
+    index + ". " + user.firstName + " " + user.lastName
+  }}</b>
   <div class="button">
     <button (click)="showViewModal = true" class="ui right floated button pink">
       View Details
@@ -11,7 +11,7 @@
 
 <app-modal (dismiss)="showViewModal = false" *ngIf="showViewModal">
   <div modalTitleP1>
-    <p>Details of User: </p>
+    <p>Details of User:</p>
   </div>
   <div modalTitleP2>
     <h3>{{ user.firstName + " " + user.lastName }}</h3>
@@ -45,7 +45,7 @@
 
 <app-modal (dismiss)="showEditModal = false" *ngIf="showEditModal">
   <div modalTitleP1>
-    <p>Details of User: </p>
+    <p>Details of User:</p>
   </div>
   <div modalTitleP2>
     <h3>{{ user.firstName + " " + user.lastName }}</h3>
