@@ -1,15 +1,29 @@
 <div class="create-user">
-  <button (click)="showModal = true" class="ui button pink">
+  <button class="ui button pink" (click)="openPopup()">
     <i class="add icon"></i>
     Add Users
   </button>
 
-  <app-modal (dismiss)="showModal = false" *ngIf="showModal">
-    <div modalTitleP1><h3>Add New User Details</h3></div>
-    <app-create-form
-      (userCreate)="onSubmit($event)"
-      (cancel)="onCancel()"
-      [user]="user"
-    ></app-create-form>
-  </app-modal>
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{ display: displayStyle }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add New User Details</h4>
+          <i class="close icon" (click)="closePopup()"></i>
+        </div>
+        <div class="modal-body">
+          <app-create-form
+            (userCreate)="onSubmit($event)"
+            (cancel)="closePopup()"
+            [user]="user"
+          ></app-create-form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -8,7 +8,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.css'],
 })
 export class CreateUserComponent {
-  showModal: boolean = false;
   user: User;
 
   constructor(private userService:UserService) {
@@ -23,7 +22,12 @@ export class CreateUserComponent {
     this.userService.createUser(user);
   }
 
-  onCancel() {
-    this.showModal = false;
+  displayStyle = "none";
+  
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
   }
 }

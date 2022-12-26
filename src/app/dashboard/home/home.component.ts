@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.userService.usersObservable
       .pipe(takeUntil(this.destroy$))
       .subscribe((users) => (this.users = users));
-  }
+  } 
 
   ngOnDestroy() {
     this.destroy$.next(null);

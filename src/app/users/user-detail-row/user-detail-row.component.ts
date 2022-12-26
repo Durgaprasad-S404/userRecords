@@ -29,4 +29,22 @@ export class UserDetailRowComponent {
   onEdit() {
     this.userService.editUser(this.editUserForm.value);
   }
+
+  viewDisplayStyle: string = 'none';
+  editDisplayStyle: string = 'none';
+
+  openPopup(popupType: string) {
+    if (popupType === 'view') {
+      this.viewDisplayStyle = 'block';
+    } else {
+      this.editDisplayStyle = 'block';
+    }
+  }
+  closePopup(popupType: string) {
+    if (popupType === 'view') {
+      this.viewDisplayStyle = 'none';
+    } else {
+      this.editDisplayStyle = 'none';
+    }
+  }
 }

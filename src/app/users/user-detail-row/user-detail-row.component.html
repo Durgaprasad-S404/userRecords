@@ -3,78 +3,97 @@
     index + ". " + user.firstName + " " + user.lastName
   }}</b>
   <div class="button">
-    <button (click)="showViewModal = true" class="ui right floated button pink">
+    <button (click)="openPopup('view')" class="ui right floated button pink">
       View Details
     </button>
   </div>
 </div>
 
-<app-modal (dismiss)="showViewModal = false" *ngIf="showViewModal">
-  <div modalTitleP1>
-    <p>Details of User:</p>
-  </div>
-  <div modalTitleP2>
-    <h3>{{ user.firstName + " " + user.lastName }}</h3>
-  </div>
-  <div class="body">
-    <p>
-      First Name:<b> {{ user.firstName }}</b>
-    </p>
-    <p>
-      Last Name:<b> {{ user.lastName }}</b>
-    </p>
-    <p>
-      ID Number:<b> {{ user.id }}</b>
-    </p>
-  </div>
-  <div class="buttons">
-    <button
-      (click)="showViewModal = false; showEditModal = true"
-      class="ui right floated pink button"
-    >
-      Edit
-    </button>
-    <button
-      (click)="showViewModal = false"
-      class="ui right floated pink basic button"
-    >
-      Cancel
-    </button>
-  </div>
-</app-modal>
-
-<app-modal (dismiss)="showEditModal = false" *ngIf="showEditModal">
-  <div modalTitleP1>
-    <p>Details of User:</p>
-  </div>
-  <div modalTitleP2>
-    <h3>{{ user.firstName + " " + user.lastName }}</h3>
-  </div>
-  <form (ngSubmit)="onEdit()" class="ui form" [formGroup]="editUserForm">
-    <app-input
-      [control]="editUserForm.controls['firstName'] | formControl"
-      inputType="text"
-      label="First Name: "
-    ></app-input>
-    <app-input
-      [control]="editUserForm.controls['lastName'] | formControl"
-      inputType="text"
-      label="Last Name: "
-    ></app-input>
-    <div class="buttons">
-      <button
-        [disabled]="!editUserForm.valid"
-        (click)="onEdit(); showEditModal = false"
-        class="ui right floated pink button"
-      >
-        Save
-      </button>
-      <button
-        (click)="showEditModal = false"
-        class="ui right floated pink basic button"
-      >
-        Cancel
-      </button>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: viewDisplayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Details of User: {{ user.firstName + " " + user.lastName }}</h4>
+        <i class="close icon" (click)="closePopup('view')"></i>
+      </div>
+      <div class="modal-body">
+        <div class="body">
+          <p>
+            First Name:<b> {{ user.firstName }}</b>
+          </p>
+          <p>
+            Last Name:<b> {{ user.lastName }}</b>
+          </p>
+          <p>
+            ID Number:<b> {{ user.id }}</b>
+          </p>
+        </div>
+        <div class="buttons">
+          <button
+            (click)="closePopup('view'); openPopup('edit')"
+            class="ui right floated pink button"
+          >
+            Edit
+          </button>
+          <button
+            (click)="closePopup('view')"
+            class="ui right floated pink basic button"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
-  </form>
-</app-modal>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: editDisplayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Details of User: {{ user.firstName + " " + user.lastName }}</h4>
+        <i class="close icon" (click)="closePopup('view')"></i>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onEdit()" class="ui form" [formGroup]="editUserForm">
+          <app-input
+            [control]="editUserForm.controls['firstName'] | formControl"
+            inputType="text"
+            label="First Name: "
+          ></app-input>
+          <app-input
+            [control]="editUserForm.controls['lastName'] | formControl"
+            inputType="text"
+            label="Last Name: "
+          ></app-input>
+          <div class="buttons">
+            <button
+              [disabled]="!editUserForm.valid"
+              (click)="onEdit(); showEditModal = false"
+              class="ui right floated pink button"
+            >
+              Save
+            </button>
+            <button
+              (click)="closePopup('edit')"
+              class="ui right floated pink basic button"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -38,6 +38,11 @@ export class CreateFormComponent implements OnInit {
   }
 
   onCancel(){
+    this.userForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      id: new FormControl('', [Validators.required]),
+    });
     this.cancel.emit();
   }
 }
