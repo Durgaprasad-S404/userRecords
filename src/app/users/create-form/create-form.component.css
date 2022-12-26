@@ -1,0 +1,7 @@
+.buttons {
+  padding: 20px;
+}
+
+.ui.right.floated.pink.button:disabled {
+  background-color: grey;
+}

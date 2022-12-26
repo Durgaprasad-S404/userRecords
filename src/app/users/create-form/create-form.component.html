@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="userForm">
+  <app-input
+    [control]="userForm.controls['firstName'] | formControl"
+    inputType="text"
+    label="First Name: "
+  ></app-input>
+  <app-input
+    [control]="userForm.controls['lastName'] | formControl"
+    inputType="text"
+    label="Last Name: "
+  ></app-input>
+  <app-input
+    [control]="userForm.controls['id'] | formControl"
+    inputType="text"
+    label="ID: "
+  ></app-input>
+  <div class="buttons">
+    <button
+      (click)="onSubmit(); onCancel()"
+      [disabled]="!userForm.valid"
+      class="right floated ui button pink"
+    >
+      Save
+    </button>
+    <button (click)="onCancel()" class="right floated ui button pink basic">
+      Cancel
+    </button>
+  </div>
+</form>

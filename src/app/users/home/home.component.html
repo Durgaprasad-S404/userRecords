@@ -1,0 +1,9 @@
+<div><app-create-user></app-create-user></div>
+<div>
+  <app-user-detail-row
+    class="detail-row"
+    *ngFor="let user of users; let indexOfElement = index"
+    [user]="user"
+    [index]="indexOfElement + 1"
+  ></app-user-detail-row>
+</div>
